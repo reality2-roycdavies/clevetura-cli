@@ -4,18 +4,12 @@
 //! to stderr; exit code 0 on success, non-zero on failure. Debug subcommands
 //! (`info`, `probe`, `watch`) print human-readable text.
 
-mod ble;
-mod config;
-mod hid;
-mod keyboard;
-mod proto;
-mod slider_actions;
-
 use std::process::ExitCode;
 
 use serde_json::{json, Value};
 
-use crate::config::Config;
+use clevetura_cli::{ble, config, hid, keyboard, proto};
+use clevetura_cli::config::Config;
 
 fn main() -> ExitCode {
     let args: Vec<String> = std::env::args().collect();

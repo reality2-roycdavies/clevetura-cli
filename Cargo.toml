@@ -10,6 +10,10 @@ categories = ["command-line-utilities", "hardware-support"]
 repository = "https://github.com/reality2-roycdavies/clevetura-cli"
 homepage = "https://github.com/reality2-roycdavies/clevetura-cli"
 
+[lib]
+name = "clevetura_cli"
+path = "src/lib.rs"
+
 [[bin]]
 name = "clevetura-cli"
 path = "src/main.rs"
