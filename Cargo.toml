@@ -1,0 +1,49 @@
+[package]
+name = "clevetura-cli"
+version = "0.1.0"
+edition = "2021"
+authors = ["Roy C. Davies"]
+license = "MIT"
+description = "Headless CLI for Clevetura TouchOnKeys keyboard (USB HID + BLE protobuf)"
+keywords = ["clevetura", "keyboard", "touchpad", "hid", "bluetooth"]
+categories = ["command-line-utilities", "hardware-support"]
+repository = "https://github.com/reality2-roycdavies/clevetura-cli"
+homepage = "https://github.com/reality2-roycdavies/clevetura-cli"
+
+[[bin]]
+name = "clevetura-cli"
+path = "src/main.rs"
+
+[dependencies]
+# Async runtime (BLE work uses futures + tokio)
+tokio = { version = "1", features = ["full"] }
+futures = "0.3"
+
+# JSON I/O — every CLI subcommand outputs a single JSON line
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Config file paths
+dirs = "6"
+
+# USB HID
+hidapi = "2"
+
+# Protocol Buffers (Layer 2 keyboard protocol)
+prost = "0.13"
+
+# Base64 wraps protobuf-over-HID
+base64 = "0.22"
+
+# CRC32 used by BLE protobuf transport
+crc32fast = "1"
+
+# Bluetooth LE
+btleplug = "0.11"
+
+# UUID parsing for BLE service/characteristic
+uuid = "1"
+
+[profile.release]
+lto = true
+codegen-units = 1
